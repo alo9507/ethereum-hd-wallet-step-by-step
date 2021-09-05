@@ -15,7 +15,7 @@ function generateSeed(mnemonic) {
 function generatePrivKey(mnemonic) {
     const seed = generateSeed(mnemonic);
     // Changing the derviation path here will give you a new priv key from the same seed phrase
-    return hdkey.fromMasterSeed(seed).derivePath(`m/44'/60'/0'/0/0`).getWallet().getPrivateKey();
+    return hdkey.fromMasterSeed(seed).derivePath(`m/44'/60'/2'/0/0`).getWallet().getPrivateKey();
 }
 
 function derivePubKey(privKey) {
@@ -47,17 +47,17 @@ console.log("\n");
 
 const seed = generateSeed(mnemonic);
 console.log("SEED");
-console.log(seed);
+console.log(Uint8Array.from(seed));
 console.log("\n");
 
 const privkey = generatePrivKey(mnemonic);
 console.log("PRIVATE KEY");
-console.log(privkey);
+console.log(Uint8Array.from(privkey));
 console.log("\n");
 
 const pubkey = derivePubKey(privkey);
 console.log("PUBLIC KEY");
-console.log(pubkey);
+console.log(Uint8Array.from(pubkey));
 console.log("\n");
 
 const address = keccak256(pubkey);
